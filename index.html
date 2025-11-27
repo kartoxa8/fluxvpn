@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>VPN Panel</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Загрузка -->
+        <div id="loading" class="loading">
+            <div class="loader"></div>
+            <p>Загрузка...</p>
+        </div>
+
+        <!-- Главный экран -->
+        <div id="main" class="container hidden">
+            <!-- Хедер с профилем -->
+            <div class="header">
+                <div class="user-info">
+                    <div class="avatar" id="avatar">U</div>
+                    <div class="user-details">
+                        <div class="username" id="username">User</div>
+                        <div class="user-status" id="user-status">
+                            <span class="status-dot"></span>
+                            <span id="status-text">Загрузка...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="balance-card">
+                    <span class="balance-label">Баланс</span>
+                    <span class="balance-value" id="balance">0 ₽</span>
+                </div>
+            </div>
+
+            <!-- Статус подписки -->
+            <div class="subscription-card" id="subscription-card">
+                <div class="sub-header">
+                    <div class="sub-icon">🛡️</div>
+                    <div class="sub-info">
+                        <div class="sub-title">VPN Подписка</div>
+                        <div class="sub-status" id="sub-status">Неактивна</div>
+                    </div>
+                    <div class="sub-badge" id="sub-badge">FREE</div>
+                </div>
+                <div class="sub-progress-container" id="progress-container">
+                    <div class="sub-progress">
+                        <div class="sub-progress-bar" id="progress-bar"></div>
+                    </div>
+                    <div class="sub-time" id="sub-time">Осталось: --</div>
+                </div>
+            </div>
+
+            <!-- Навигация -->
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="key">🔑 Ключ</button>
+                <button class="nav-tab" data-tab="plans">💎 Тарифы</button>
+                <button class="nav-tab" data-tab="info">📊 Инфо</button>
+            </div>
+
+            <!-- Вкладка: Ключ -->
+            <div id="key-tab" class="tab-content active">
+                <div class="key-section" id="key-section">
+                    <!-- Контент генерируется в JS -->
+                </div>
+            </div>
+
+            <!-- Вкладка: Тарифы -->
+            <div id="plans-tab" class="tab-content">
+                <div class="plans-list" id="plans-list"></div>
+            </div>
+
+            <!-- Вкладка: Инфо -->
+            <div id="info-tab" class="tab-content">
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">📥</div>
+                        <div class="info-label">Скачано</div>
+                        <div class="info-value" id="download">0 GB</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📤</div>
+                        <div class="info-label">Загружено</div>
+                        <div class="info-value" id="upload">0 GB</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🌍</div>
+                        <div class="info-label">Сервер</div>
+                        <div class="info-value" id="server">--</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⚡</div>
+                        <div class="info-label">Протокол</div>
+                        <div class="info-value">VLESS</div>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h3>📱 Как подключиться?</h3>
+                    <div class="help-steps">
+                        <div class="help-step">
+                            <span class="step-num">1</span>
+                            <span>Скачай приложение V2rayNG (Android) или Streisand (iOS)</span>
+                        </div>
+                        <div class="help-step">
+                            <span class="step-num">2</span>
+                            <span>Скопируй ключ во вкладке "Ключ"</span>
+                        </div>
+                        <div class="help-step">
+                            <span class="step-num">3</span>
+                            <span>Импортируй ключ в приложение</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-icon" id="modal-icon">✅</div>
+                <div class="modal-title" id="modal-title">Успешно!</div>
+                <div class="modal-text" id="modal-text"></div>
+                <button class="modal-btn" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
